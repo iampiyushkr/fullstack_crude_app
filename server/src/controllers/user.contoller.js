@@ -43,10 +43,6 @@ router.post("", async (req, res) => {
     const section = await User.findByIdAndRemove(req.params.id);
     return res.status(200).json({ section });
   });
-  router.get("/:id/books", async (req, res) => {
-    const comments = await Book.find({ sectionId:{_id:req.params.id}  }).lean().exec();
-    const post = await User.findById(req.params.id).lean().exec();
   
-    return res.status(200).json({ comments, post });
-  });
+  
   module.exports=router;
